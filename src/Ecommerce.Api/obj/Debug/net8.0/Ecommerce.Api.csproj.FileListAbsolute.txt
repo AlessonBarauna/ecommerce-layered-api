@@ -37,3 +37,4 @@ C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\obj\Debug\net8.0
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\obj\Debug\net8.0\Ecommerce.Api.pdb
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\obj\Debug\net8.0\Ecommerce.Api.genruntimeconfig.cache
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\obj\Debug\net8.0\ref\Ecommerce.Api.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\obj\Debug\net8.0\Ecommerce.Api.sourcelink.json
