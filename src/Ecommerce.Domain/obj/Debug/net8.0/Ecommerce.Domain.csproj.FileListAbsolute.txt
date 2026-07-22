@@ -9,3 +9,4 @@ C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Domain\obj\Debug\net
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Domain\obj\Debug\net8.0\refint\Ecommerce.Domain.dll
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Domain\obj\Debug\net8.0\Ecommerce.Domain.pdb
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Domain\obj\Debug\net8.0\ref\Ecommerce.Domain.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Domain\obj\Debug\net8.0\Ecommerce.Domain.sourcelink.json

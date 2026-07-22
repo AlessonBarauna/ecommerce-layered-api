@@ -102,3 +102,4 @@ C:\Users\aless\Projetos\ecommerce-layered-api\tests\Ecommerce.Tests\obj\Debug\ne
 C:\Users\aless\Projetos\ecommerce-layered-api\tests\Ecommerce.Tests\obj\Debug\net8.0\Ecommerce.Tests.pdb
 C:\Users\aless\Projetos\ecommerce-layered-api\tests\Ecommerce.Tests\obj\Debug\net8.0\Ecommerce.Tests.genruntimeconfig.cache
 C:\Users\aless\Projetos\ecommerce-layered-api\tests\Ecommerce.Tests\obj\Debug\net8.0\ref\Ecommerce.Tests.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\tests\Ecommerce.Tests\obj\Debug\net8.0\Ecommerce.Tests.sourcelink.json
