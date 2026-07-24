@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "p9NYKNpPb2M=",
+  "dgSpecHash": "oI4WT5z6OVU=",
   "success": true,
   "projectFilePath": "C:\\Users\\aless\\Projetos\\ecommerce-layered-api\\src\\Ecommerce.Infrastructure\\Ecommerce.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\aless\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.10\\microsoft.extensions.dependencyinjection.abstractions.10.0.10.nupkg.sha512"
+  ],
   "logs": []
 }
