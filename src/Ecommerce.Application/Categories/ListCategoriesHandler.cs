@@ -12,7 +12,7 @@ public sealed class ListCategoriesHandler
         _categoryRepository = categoryRepository;
     }
 
-    public async Task<IReadOnlyCollection<CategoryResponse>> HandlerAsync(
+    public async Task<IReadOnlyCollection<CategoryResponse>> HandleAsync(
         CancellationToken cancellationToken)
     {
         var categories = await _categoryRepository.GetAllAsync(cancellationToken);
