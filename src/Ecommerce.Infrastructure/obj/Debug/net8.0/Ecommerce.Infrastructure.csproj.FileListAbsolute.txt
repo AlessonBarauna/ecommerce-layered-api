@@ -16,3 +16,5 @@ C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\obj\D
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\obj\Debug\net8.0\Ecommerce.Infrastructure.pdb
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\obj\Debug\net8.0\ref\Ecommerce.Infrastructure.dll
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\obj\Debug\net8.0\Ecommerce.Infrastructure.sourcelink.json
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\bin\Debug\net8.0\Ecommerce.Infrastructure.runtimeconfig.json
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Infrastructure\obj\Debug\net8.0\Ecommerce.Infrastructure.genruntimeconfig.cache
