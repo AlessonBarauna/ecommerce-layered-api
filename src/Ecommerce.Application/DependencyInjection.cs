@@ -1,6 +1,8 @@
 using Ecommerce.Application.Categories;
 using Ecommerce.Application.Products;
 using Microsoft.Extensions.DependencyInjection;
+using Ecommerce.Application.Carts;
+using Ecommerce.Application.Customers;
 
 namespace Ecommerce.Application;
 
@@ -15,6 +17,11 @@ public static class DependencyInjection
         services.AddScoped<CreateProductHandler>();
         services.AddScoped<ListProductsHandler>();
         services.AddScoped<GetProductByIdHandler>();
+        services.AddScoped<CreateCustomerHandler>();
+        services.AddScoped<GetCustomerByIdHandler>();
+
+        services.AddScoped<AddItemToCartHandler>();
+        services.AddScoped<GetCartByCustomerIdHandler>();
 
         return services;
     }
