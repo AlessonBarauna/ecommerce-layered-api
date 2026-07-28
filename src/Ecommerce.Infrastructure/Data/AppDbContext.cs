@@ -1,6 +1,8 @@
 using Ecommerce.Domain.Categories;
 using Ecommerce.Domain.Products;
 using Microsoft.EntityFrameworkCore;
+using Ecommerce.Domain.Carts;
+using Ecommerce.Domain.Customers;
 
 namespace Ecommerce.Infrastructure.Data;
 
@@ -14,6 +16,10 @@ public sealed class AppDbContext : DbContext
     public DbSet<Category> Categories => Set<Category>();
 
     public DbSet<Product> Products => Set<Product>();
+
+    public DbSet<Customer> Customers => Set<Customer>();
+
+    public DbSet<Cart> Carts => Set<Cart>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -70,5 +76,121 @@ public sealed class AppDbContext : DbContext
 
             builder.HasIndex(product => product.CategoryId);
         });
+
+        modelBuilder.Entity<Customer>(builder =>
+{
+    builder.ToTable("customers");
+
+    builder.HasKey(customer => customer.Id);
+
+    builder.Property(customer => customer.FullName)
+        .IsRequired()
+        .HasMaxLength(200);
+
+    builder.Property(customer => customer.Email)
+        .IsRequired()
+        .HasMaxLength(200);
+
+    builder.Property(customer => customer.Document)
+        .IsRequired()
+        .HasMaxLength(30);
+
+    builder.Property(customer => customer.IsActive)
+        .IsRequired();
+
+    builder.Property(customer => customer.CreatedAt)
+        .IsRequired();
+
+    builder.HasIndex(customer => customer.Email)
+        .IsUnique();
+
+    builder.OwnsMany(customer => customer.Addresses, addressBuilder =>
+    {
+        addressBuilder.ToTable("customer_addresses");
+
+        addressBuilder.WithOwner()
+            .HasForeignKey("CustomerId");
+
+        addressBuilder.HasKey("Id");
+
+        addressBuilder.Property(address => address.Id)
+            .ValueGeneratedNever();
+
+        addressBuilder.Property(address => address.Street)
+            .IsRequired()
+            .HasMaxLength(200);
+
+        addressBuilder.Property(address => address.Number)
+            .IsRequired()
+            .HasMaxLength(30);
+
+        addressBuilder.Property(address => address.Neighborhood)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        addressBuilder.Property(address => address.City)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        addressBuilder.Property(address => address.State)
+            .IsRequired()
+            .HasMaxLength(2);
+
+        addressBuilder.Property(address => address.ZipCode)
+            .IsRequired()
+            .HasMaxLength(20);
+
+        addressBuilder.Property(address => address.IsDefault)
+            .IsRequired();
+
+        addressBuilder.Property(address => address.CreatedAt)
+            .IsRequired();
+    });
+});
+
+modelBuilder.Entity<Cart>(builder =>
+{
+    builder.ToTable("carts");
+
+    builder.HasKey(cart => cart.Id);
+
+    builder.Property(cart => cart.CustomerId)
+        .IsRequired();
+
+    builder.Property(cart => cart.CreatedAt)
+        .IsRequired();
+
+    builder.Property(cart => cart.UpdatedAt)
+        .IsRequired();
+
+    builder.HasIndex(cart => cart.CustomerId)
+        .IsUnique();
+
+    builder.OwnsMany(cart => cart.Items, itemBuilder =>
+    {
+        itemBuilder.ToTable("cart_items");
+
+        itemBuilder.WithOwner()
+            .HasForeignKey("CartId");
+
+        itemBuilder.Property<Guid>("Id");
+
+        itemBuilder.HasKey("Id");
+
+        itemBuilder.Property(item => item.ProductId)
+            .IsRequired();
+
+        itemBuilder.Property(item => item.ProductName)
+            .IsRequired()
+            .HasMaxLength(200);
+
+        itemBuilder.Property(item => item.Quantity)
+            .IsRequired();
+
+        itemBuilder.Property(item => item.UnitPrice)
+            .IsRequired()
+            .HasPrecision(18, 2);
+    });
+});
     }
 }
