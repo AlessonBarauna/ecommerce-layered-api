@@ -4,6 +4,11 @@ public sealed class Cart
 {
     private readonly List<CartItem> _items = [];
 
+    private Cart()
+    {
+        
+    }
+
     public Cart(
         Guid id,
         Guid customerId)

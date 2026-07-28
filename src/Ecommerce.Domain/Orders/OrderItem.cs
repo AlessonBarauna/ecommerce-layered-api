@@ -2,6 +2,10 @@ namespace Ecommerce.Domain.Orders;
 
 public sealed class OrderItem
 {
+    private OrderItem()
+    {
+        
+    }
     public OrderItem(
         Guid productId,
         string productName,

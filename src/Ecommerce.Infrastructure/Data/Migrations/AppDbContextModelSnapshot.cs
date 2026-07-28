@@ -148,7 +148,7 @@ namespace Ecommerce.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Ecommerce.Domain.Carts.Cart", b =>
                 {
-                    b.OwnsMany("Ecommerce.Domain.Carts.CartItem", "Items", b1 =>
+                    b.OwnsMany("Ecommerce.Domain.Carts.Cart.Items#Ecommerce.Domain.Carts.CartItem", "Items", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
@@ -187,7 +187,7 @@ namespace Ecommerce.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Ecommerce.Domain.Customers.Customer", b =>
                 {
-                    b.OwnsMany("Ecommerce.Domain.Customers.Address", "Addresses", b1 =>
+                    b.OwnsMany("Ecommerce.Domain.Customers.Customer.Addresses#Ecommerce.Domain.Customers.Address", "Addresses", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .HasColumnType("uuid");

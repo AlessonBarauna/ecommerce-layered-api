@@ -2,6 +2,7 @@ using Ecommerce.Application.Categories;
 using Ecommerce.Application.Products;
 using Microsoft.Extensions.DependencyInjection;
 using Ecommerce.Application.Carts;
+using Ecommerce.Application.Orders;
 using Ecommerce.Application.Customers;
 
 namespace Ecommerce.Application;
@@ -22,6 +23,7 @@ public static class DependencyInjection
 
         services.AddScoped<AddItemToCartHandler>();
         services.AddScoped<GetCartByCustomerIdHandler>();
+        services.AddScoped<CheckoutHandler>();
 
         return services;
     }

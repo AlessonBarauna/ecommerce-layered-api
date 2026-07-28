@@ -10,6 +10,7 @@ public static class EndpointExtensions
         apiV1.MapProductEndpoints();
         apiV1.MapCustomerEndpoints();
         apiV1.MapCartEndpoints();
+        apiV1.MapOrderEndpoints();
 
         return app;
     }

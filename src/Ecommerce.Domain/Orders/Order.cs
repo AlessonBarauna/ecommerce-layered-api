@@ -4,6 +4,11 @@ public sealed class Order
 {
     private readonly List<OrderItem> _items = [];
 
+    private Order()
+    {
+        
+    }
+
     public Order(
         Guid id,
         Guid customerId,

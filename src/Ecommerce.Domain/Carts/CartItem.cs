@@ -2,6 +2,10 @@ namespace Ecommerce.Domain.Carts;
 
 public sealed class CartItem
 {
+    private CartItem()
+    {
+        
+    }
     public CartItem(
         Guid productId,
         string productName,
