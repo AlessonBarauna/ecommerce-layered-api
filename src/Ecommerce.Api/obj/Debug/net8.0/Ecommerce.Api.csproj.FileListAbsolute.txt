@@ -118,3 +118,14 @@ C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\Users\aless\Projetos\ecommerce-layered-api\src\Ecommerce.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

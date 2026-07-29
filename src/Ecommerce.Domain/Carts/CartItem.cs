@@ -4,7 +4,7 @@ public sealed class CartItem
 {
     private CartItem()
     {
-        
+        ProductName = string.Empty;
     }
     public CartItem(
         Guid productId,

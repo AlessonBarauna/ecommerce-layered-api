@@ -15,7 +15,8 @@ public static class CategoryEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return Results.Created($"/api/v1/categories/{response.Id}", response);
-        });
+        })
+        .RequireAuthorization();
 
         app.MapGet("/categories", async (
             [FromServices] ListCategoriesHandler handler,

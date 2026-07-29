@@ -4,7 +4,7 @@ public sealed class OrderItem
 {
     private OrderItem()
     {
-        
+        ProductName = string.Empty;
     }
     public OrderItem(
         Guid productId,

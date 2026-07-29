@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Ecommerce.Domain.Carts;
 using Ecommerce.Domain.Customers;
 using Ecommerce.Domain.Orders;
+using Ecommerce.Domain.Users;
 
 namespace Ecommerce.Infrastructure.Data;
 
@@ -18,6 +19,7 @@ public sealed class AppDbContext : DbContext
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Cart> Carts => Set<Cart>();
     public DbSet<Order> Orders => Set<Order>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -245,5 +247,36 @@ public sealed class AppDbContext : DbContext
                     .HasPrecision(18, 2);
             });
         });
+        
+        modelBuilder.Entity<User>(builder =>
+        {
+            builder.ToTable("users");
+
+            builder.HasKey(user => user.Id);
+
+            builder.Property(user => user.FullName)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            builder.Property(user => user.Email)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            builder.Property(user => user.PasswordHash)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            builder.Property(user => user.Role)
+                .IsRequired();
+
+            builder.Property(user => user.IsActive)
+                .IsRequired();
+
+            builder.Property(user => user.CreatedAt)
+                .IsRequired();
+
+            builder.HasIndex(user => user.Email)
+                .IsUnique();
+        });    
     }
 }
