@@ -24,6 +24,7 @@ public sealed class GetCustomerByIdHandler
 
         return new CustomerResponse(
             customer.Id,
+            customer.UserId,
             customer.FullName,
             customer.Email,
             customer.Document,

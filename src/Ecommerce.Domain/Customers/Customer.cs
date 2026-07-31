@@ -6,10 +6,16 @@ public sealed class Customer
 
     public Customer(
         Guid id,
+        Guid userId,
         string fullName,
         string email,
         string document)
     {
+        if (userId == Guid.Empty)
+        {
+            throw new InvalidOperationException("Customer user id is required.");
+        }
+
         if (string.IsNullOrWhiteSpace(fullName))
         {
             throw new InvalidOperationException("Customer full name is required.");
@@ -26,6 +32,7 @@ public sealed class Customer
         }
 
         Id = id;
+        UserId = userId;
         FullName = fullName;
         Email = email;
         Document = document;
@@ -34,19 +41,13 @@ public sealed class Customer
     }
 
     public Guid Id { get; private set; }
-
-    public string FullName { get; private set; }
-
-    public string Email { get; private set; }
-
+    public Guid UserId { get; private set; }
+    public string FullName { get; private set; } = string.Empty;
+    public string Email { get; private set; } = string.Empty;
     public string Document { get; private set; }
-
     public bool IsActive { get; private set; }
-
     public DateTime CreatedAt { get; private set; }
-
     public IReadOnlyCollection<Address> Addresses => _addresses;
-
     public void AddAddress(Address address)
     {
         if (address.IsDefault)

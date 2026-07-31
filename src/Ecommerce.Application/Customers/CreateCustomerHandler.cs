@@ -32,6 +32,7 @@ public sealed class CreateCustomerHandler
 
         var customer = new Customer(
             Guid.NewGuid(),
+            request.UserId,
             request.FullName,
             request.Email,
             request.Document);
@@ -42,6 +43,7 @@ public sealed class CreateCustomerHandler
 
         return new CustomerResponse(
             customer.Id,
+            customer.UserId,
             customer.FullName,
             customer.Email,
             customer.Document,

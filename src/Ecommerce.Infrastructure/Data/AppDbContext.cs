@@ -83,6 +83,12 @@ public sealed class AppDbContext : DbContext
 
             builder.HasKey(customer => customer.Id);
 
+            builder.Property(customer => customer.UserId)
+                .IsRequired();
+
+            builder.HasIndex(customer => customer.UserId)
+                .IsUnique();
+
             builder.Property(customer => customer.FullName)
                 .IsRequired()
                 .HasMaxLength(200);

@@ -11,6 +11,7 @@ public sealed class CustomerTests
         Assert.Throws<InvalidOperationException>(() =>
             new Customer(
                 Guid.NewGuid(),
+                Guid.NewGuid(),
                 "",
                 "customer@email.com",
                 "12345678900"));
@@ -21,6 +22,7 @@ public sealed class CustomerTests
     {
         Assert.Throws<InvalidOperationException>(() =>
             new Customer(
+                Guid.NewGuid(),
                 Guid.NewGuid(),
                 "Ana Silva",
                 "",
@@ -33,6 +35,7 @@ public sealed class CustomerTests
         Assert.Throws<InvalidOperationException>(() =>
             new Customer(
                 Guid.NewGuid(),
+                Guid.NewGuid(),
                 "Ana Silva",
                 "customer@email.com",
                 ""));
@@ -42,6 +45,7 @@ public sealed class CustomerTests
     public void AddAddress_ShouldKeepOnlyOneDefaultAddress_WhenNewDefaultAddressIsAdded()
     {
         var customer = new Customer(
+            Guid.NewGuid(),
             Guid.NewGuid(),
             "Ana Silva",
             "customer@email.com",
