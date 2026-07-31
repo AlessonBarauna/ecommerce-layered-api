@@ -1,6 +1,5 @@
 using Ecommerce.Application.Products;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -19,7 +18,8 @@ public static class ProductEndpoints
             return response is null 
                 ? Results.BadRequest("Category was not found")
                 : Results.Created($"/api/v1/products/{response.Id}", response);
-        });
+        })
+        .RequireAuthorization("AdminOnly");
 
         app.MapGet("/products", async (
             [FromServices] ListProductsHandler handler,

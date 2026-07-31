@@ -17,7 +17,8 @@ public static class OrderEndpoints
             return response is null
                 ? Results.BadRequest("Customer, cart or product was not found.")
                 : Results.Created($"/api/v1/orders/{response.Id}", response);
-        });
+        })
+        .RequireAuthorization("CustomerOnly");
 
         return app;
     }

@@ -18,7 +18,8 @@ public static class CartEndpoints
             return response is null
                 ? Results.BadRequest("Customer or product was not found.")
                 : Results.Ok(response);
-        });
+        })
+        .RequireAuthorization("CustomerOnly");
 
         app.MapGet("/customers/{customerId:guid}/cart", async (
             Guid customerId,
@@ -30,7 +31,8 @@ public static class CartEndpoints
             return response is null
                 ? Results.NotFound()
                 : Results.Ok(response);
-        });
+        })
+        .RequireAuthorization("CustomerOnly");
 
         return app;
     }

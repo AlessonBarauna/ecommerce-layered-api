@@ -16,7 +16,7 @@ public static class CategoryEndpoints
 
             return Results.Created($"/api/v1/categories/{response.Id}", response);
         })
-        .RequireAuthorization();
+        .RequireAuthorization("AdminOnly");
 
         app.MapGet("/categories", async (
             [FromServices] ListCategoriesHandler handler,

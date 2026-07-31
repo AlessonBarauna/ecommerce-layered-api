@@ -17,7 +17,8 @@ public static class CustomerEndpoints
             return response is null
                 ? Results.Conflict("Customer email already exists.")
                 : Results.Created($"/api/v1/customers/{response.Id}", response);
-        });
+        })
+        .RequireAuthorization();
 
         app.MapGet("/customers/{id:guid}", async (
             Guid id,
@@ -29,7 +30,8 @@ public static class CustomerEndpoints
             return response is null
                 ? Results.NotFound()
                 : Results.Ok(response);
-        });
+        })
+        .RequireAuthorization();
 
         return app;
     }
