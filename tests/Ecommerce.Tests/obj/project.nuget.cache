@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ci+SqEjh6x8=",
+  "dgSpecHash": "+VWqMVLaSTM=",
   "success": true,
   "projectFilePath": "C:\\Users\\aless\\Projetos\\ecommerce-layered-api\\tests\\Ecommerce.Tests\\Ecommerce.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aless\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\aless\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\aless\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
     "C:\\Users\\aless\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.10\\microsoft.extensions.dependencyinjection.abstractions.10.0.10.nupkg.sha512",
     "C:\\Users\\aless\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",

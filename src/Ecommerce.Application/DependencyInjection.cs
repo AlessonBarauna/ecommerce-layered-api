@@ -5,6 +5,7 @@ using Ecommerce.Application.Carts;
 using Ecommerce.Application.Orders;
 using Ecommerce.Application.Customers;
 using Ecommerce.Application.Authentication;
+using FluentValidation;
 
 namespace Ecommerce.Application;
 
@@ -29,6 +30,8 @@ public static class DependencyInjection
         services.AddScoped<RegisterUserHandler>();
         services.AddScoped<GetCurrentCustomerCartHandler>();
         services.AddScoped<AddItemToCurrentCustomerCartHandler>();
+        
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         return services;
     }

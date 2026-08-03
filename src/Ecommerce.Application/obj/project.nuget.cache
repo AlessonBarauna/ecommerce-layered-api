@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zADDu4M5kNk=",
+  "dgSpecHash": "TytLWQJHaOQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\aless\\Projetos\\ecommerce-layered-api\\src\\Ecommerce.Application\\Ecommerce.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\aless\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\aless\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.10\\microsoft.extensions.dependencyinjection.abstractions.10.0.10.nupkg.sha512"
   ],
   "logs": []
