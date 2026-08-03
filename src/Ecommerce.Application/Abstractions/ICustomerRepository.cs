@@ -6,6 +6,6 @@ public interface ICustomerRepository
 {
     Task AddAsync(Customer customer, CancellationToken cancellationToken);
     Task<Customer?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-
     Task<Customer?> GetByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<Customer?> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 }

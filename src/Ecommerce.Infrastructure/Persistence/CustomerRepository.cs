@@ -36,4 +36,11 @@ public sealed class CustomerRepository : ICustomerRepository
         return await _dbContext.Customers
             .FirstOrDefaultAsync(customer => customer.Email == email, cancellationToken);
     }
+    public async Task<Customer?> GetByUserIdAsync(
+    Guid userId,
+    CancellationToken cancellationToken)
+{
+    return await _dbContext.Customers
+        .FirstOrDefaultAsync(customer => customer.UserId == userId, cancellationToken);
+}
 }

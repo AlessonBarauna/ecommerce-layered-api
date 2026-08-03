@@ -34,6 +34,31 @@ public static class CartEndpoints
         })
         .RequireAuthorization("CustomerOnly");
 
+        app.MapPost("/me/cart/items", async (
+    AddItemToCartRequest request,
+    [FromServices] AddItemToCurrentCustomerCartHandler handler,
+    CancellationToken cancellationToken) =>
+{
+    var response = await handler.HandleAsync(request, cancellationToken);
+
+    return response is null
+        ? Results.BadRequest("Customer or product was not found.")
+        : Results.Ok(response);
+})
+.RequireAuthorization("CustomerOnly");
+
+        app.MapGet("/me/cart", async (
+            [FromServices] GetCurrentCustomerCartHandler handler,
+            CancellationToken cancellationToken) =>
+        {
+            var response = await handler.HandleAsync(cancellationToken);
+
+            return response is null
+                ? Results.NotFound()
+                : Results.Ok(response);
+        })
+        .RequireAuthorization("CustomerOnly");
+
         return app;
     }
 }

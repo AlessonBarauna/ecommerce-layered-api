@@ -27,6 +27,8 @@ public static class DependencyInjection
         services.AddScoped<CheckoutHandler>();
         services.AddScoped<LoginHandler>();
         services.AddScoped<RegisterUserHandler>();
+        services.AddScoped<GetCurrentCustomerCartHandler>();
+        services.AddScoped<AddItemToCurrentCustomerCartHandler>();
 
         return services;
     }
