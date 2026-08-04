@@ -1,5 +1,6 @@
 using Ecommerce.Application.Orders;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -9,9 +10,18 @@ public static class OrderEndpoints
     {
         app.MapPost("/orders/checkout", async (
             CheckoutRequest request,
+            IValidator<CheckoutRequest> validator,
             [FromServices] CheckoutHandler handler,
             CancellationToken cancellationToken) =>
         {
+
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
+            
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null

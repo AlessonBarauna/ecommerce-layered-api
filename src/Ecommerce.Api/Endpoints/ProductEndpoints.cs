@@ -1,5 +1,6 @@
 using Ecommerce.Application.Products;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -9,10 +10,18 @@ public static class ProductEndpoints
     {
         app.MapPost("/products", async (
             CreateProductRequest request,
+            IValidator<CreateProductRequest> validator,
             [FromServices] CreateProductHandler handler ,
             CancellationToken cancellationToken) => 
             
         {
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
+
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null 

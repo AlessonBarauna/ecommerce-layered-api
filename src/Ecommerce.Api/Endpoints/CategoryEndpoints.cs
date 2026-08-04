@@ -1,5 +1,6 @@
 using Ecommerce.Application.Categories;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -9,9 +10,17 @@ public static class CategoryEndpoints
     {
         app.MapPost("/categories", async (
             CreateCategoryRequest request,
+            IValidator<CreateCategoryRequest> validator,
             [FromServices] CreateCategoryHandler handler,
             CancellationToken cancellationToken) =>
         {
+
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return Results.Created($"/api/v1/categories/{response.Id}", response);
