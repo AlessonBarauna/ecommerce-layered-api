@@ -1,6 +1,7 @@
 using Ecommerce.Application.Customers;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
+using Ecommerce.Api.Errors;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -25,7 +26,7 @@ public static class CustomerEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null
-                ? Results.Conflict("Customer email already exists.")
+                ? ApiErrors.Conflict("Customer email already exists.")
                 : Results.Created($"/api/v1/customers/{response.Id}", response);
         })
         .RequireAuthorization();
@@ -38,7 +39,7 @@ public static class CustomerEndpoints
             var response = await handler.HandleAsync(id, cancellationToken);
 
             return response is null
-                ? Results.NotFound()
+                ? ApiErrors.NotFound("Customer was not found.")
                 : Results.Ok(response);
         })
         .RequireAuthorization();

@@ -1,6 +1,7 @@
 using Ecommerce.Application.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
+using Ecommerce.Api.Errors;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -24,7 +25,7 @@ public static class AuthEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null
-                ? Results.Conflict("User email already exists.")
+                ? ApiErrors.Conflict("User email already exists.")
                 : Results.Created($"/api/v1/users/{response.Id}", response);
         });
 
@@ -44,7 +45,7 @@ public static class AuthEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null
-                ? Results.Unauthorized()
+                ? ApiErrors.Unauthorized()
                 : Results.Ok(response);
         });
 

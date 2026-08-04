@@ -1,6 +1,7 @@
 using Ecommerce.Application.Categories;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
+using Ecommerce.Api.Errors;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -44,7 +45,7 @@ public static class CategoryEndpoints
             var response = await handler.HandleAsync(id, cancellationToken);
 
             return response is null
-                ? Results.NotFound()
+                ? ApiErrors.NotFound("Category was not found.")
                 : Results.Ok(response);
         });
 

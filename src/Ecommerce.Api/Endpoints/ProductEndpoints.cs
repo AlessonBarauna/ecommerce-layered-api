@@ -1,6 +1,7 @@
 using Ecommerce.Application.Products;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
+using Ecommerce.Api.Errors;
 
 namespace Ecommerce.Api.Endpoints;
 
@@ -25,7 +26,7 @@ public static class ProductEndpoints
             var response = await handler.HandleAsync(request, cancellationToken);
 
             return response is null 
-                ? Results.BadRequest("Category was not found")
+                ? ApiErrors.BadRequest("Category was not found.")
                 : Results.Created($"/api/v1/products/{response.Id}", response);
         })
         .RequireAuthorization("AdminOnly");
@@ -47,7 +48,7 @@ public static class ProductEndpoints
             var response = await handler.HandleAsync(id, cancellationToken);
 
             return response is null
-                ? Results.NotFound()
+                ? ApiErrors.NotFound("Product was not found.")
                 : Results.Ok(response);
         });
 
