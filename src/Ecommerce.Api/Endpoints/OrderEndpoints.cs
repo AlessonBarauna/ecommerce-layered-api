@@ -31,6 +31,27 @@ public static class OrderEndpoints
         })
         .RequireAuthorization("CustomerOnly");
 
+        app.MapPost("/me/checkout", async (
+            CheckoutCurrentCustomerRequest request,
+            IValidator<CheckoutCurrentCustomerRequest> validator,
+            [FromServices] CheckoutCurrentCustomerHandler handler,
+            CancellationToken cancellationToken) =>
+        {
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
+
+            var response = await handler.HandleAsync(request, cancellationToken);
+
+            return response is null
+                ? ApiErrors.BadRequest("Customer, cart or product was not found.")
+                : Results.Created($"/api/v1/orders/{response.Id}", response);
+        })
+        .RequireAuthorization("CustomerOnly");
+
         return app;
     }
 }

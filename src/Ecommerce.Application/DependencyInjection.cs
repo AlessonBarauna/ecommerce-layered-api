@@ -30,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<RegisterUserHandler>();
         services.AddScoped<GetCurrentCustomerCartHandler>();
         services.AddScoped<AddItemToCurrentCustomerCartHandler>();
+        services.AddScoped<CheckoutCurrentCustomerHandler>();
         
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 

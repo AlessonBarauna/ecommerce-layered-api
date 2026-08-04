@@ -3,21 +3,24 @@ using Ecommerce.Domain.Orders;
 
 namespace Ecommerce.Application.Orders;
 
-public sealed class CheckoutHandler
+public sealed class CheckoutCurrentCustomerHandler
 {
+    private readonly ICurrentUserService _currentUserService;
     private readonly ICustomerRepository _customerRepository;
     private readonly ICartRepository _cartRepository;
     private readonly IProductRepository _productRepository;
     private readonly IOrderRepository _orderRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public CheckoutHandler(
+    public CheckoutCurrentCustomerHandler(
+        ICurrentUserService currentUserService,
         ICustomerRepository customerRepository,
         ICartRepository cartRepository,
         IProductRepository productRepository,
         IOrderRepository orderRepository,
         IUnitOfWork unitOfWork)
     {
+        _currentUserService = currentUserService;
         _customerRepository = customerRepository;
         _cartRepository = cartRepository;
         _productRepository = productRepository;
@@ -26,11 +29,16 @@ public sealed class CheckoutHandler
     }
 
     public async Task<OrderResponse?> HandleAsync(
-        CheckoutRequest request,
+        CheckoutCurrentCustomerRequest request,
         CancellationToken cancellationToken)
     {
-        var customer = await _customerRepository.GetByIdAsync(
-            request.CustomerId,
+        if (_currentUserService.UserId is null)
+        {
+            return null;
+        }
+
+        var customer = await _customerRepository.GetByUserIdAsync(
+            _currentUserService.UserId.Value,
             cancellationToken);
 
         if (customer is null)
@@ -39,7 +47,7 @@ public sealed class CheckoutHandler
         }
 
         var cart = await _cartRepository.GetByCustomerIdAsync(
-            request.CustomerId,
+            customer.Id,
             cancellationToken);
 
         if (cart is null || cart.Items.Count == 0)
@@ -60,23 +68,18 @@ public sealed class CheckoutHandler
                 return null;
             }
 
-            if (cartItem.Quantity > product.StockQuantity)
-            {
-                throw new InvalidOperationException("Insufficient stock.");
-            }
-
             product.DecreaseStock(cartItem.Quantity);
 
             orderItems.Add(new OrderItem(
                 product.Id,
                 product.Name,
                 cartItem.Quantity,
-                cartItem.UnitPrice));
+                product.Price));
         }
 
         var order = new Order(
             Guid.NewGuid(),
-            request.CustomerId,
+            customer.Id,
             orderItems,
             request.ShippingAmount,
             request.DiscountAmount);
@@ -87,11 +90,6 @@ public sealed class CheckoutHandler
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return ToResponse(order);
-    }
-
-    private static OrderResponse ToResponse(Order order)
-    {
         var items = order.Items
             .Select(item => new OrderItemResponse(
                 item.ProductId,

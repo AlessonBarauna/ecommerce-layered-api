@@ -11,4 +11,5 @@ public sealed record OrderResponse(
     decimal DiscountAmount,
     decimal Total,
     OrderStatus Status,
-    DateTime CreatedAt);
+    DateTime CreatedAt,
+    DateTime UpdatedAt);
